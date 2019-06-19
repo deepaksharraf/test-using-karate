@@ -43,8 +43,3 @@ Feature: Student Registration API Testing
     Then status 200
     And match response == { "name": "Abcdef" ,"age": 43,"registrationNumber": "78909","registrationStatus": "Successful"}
     
-    Scenario: Retrive Students
-    Given url 'http://localhost:8083/student/allstudent'
-    When method get
-    Then status 200
-    And match response == [{"name": "Deepak","age": 24,"registrationNumber": "12345"},{"name": "Deepak","age": 24,"registrationNumber": "12345"},{"name": "Golden","age": 24,"registrationNumber": "12345"},{"name": "Deepak","age": 24,"registrationNumber": "12345"},{"name": "Deepak","age": 24,"registrationNumber": "12345"},{"name": "Golden","age": 12,"registrationNumber": "34567"},{"name": "Abcdef","age": 43,"registrationNumber": "78909"}]
