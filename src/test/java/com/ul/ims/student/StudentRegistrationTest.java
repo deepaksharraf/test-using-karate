@@ -1,10 +1,8 @@
 package com.ul.ims.student;
 
-import org.junit.runner.RunWith;
-import com.intuit.karate.junit4.Karate;
+import com.intuit.karate.KarateOptions;
 
-//@KarateOptions(features = "classpath:com/ul/ims/student/studentRegistration.feature")
-@RunWith(Karate.class)
-public class StudentRegistrationTest {
+@KarateOptions(features = "classpath:com/ul/ims/student/studentRegistration.feature")
+public class StudentRegistrationTest extends BaseClass {
 	
 }

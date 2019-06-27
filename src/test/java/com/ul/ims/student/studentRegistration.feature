@@ -16,30 +16,28 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
+
 Feature: Student Registration API Testing
 
-  @tag1
-  Scenario: Student Registration
-    Given url 'http://localhost:8083/register/student'
-    And request { "name": "Deepak" ,"age": "24","registrationNumber": "12345"}
-    When method post
-    Then status 200
-    And match response == { "name": "Deepak" ,"age": 24,"registrationNumber": "12345","registrationStatus": "Successful"}
+Background:
+		* def studentRegReq = read('post-request.json')
+		* def result = call studentRegReq
 
-  @tag2
   Scenario: Student Registration
-    Given url 'http://localhost:8083/register/student'
-    And request { "name": "Golden" ,"age": "12","registrationNumber": "34567"}
-    When method post
+ 
+  * def responsePattern = 
+  """
+  {
+  	name: '#string',
+  	age: '#number',
+  	registrationNumber: '#number',
+  	registrationStatus: '##string'
+  }
+  """ 
+
+ Given url 'http://10.205.7.11:8083/student/allstudent'
+    When method get
     Then status 200
-    And match response == { "name": "Golden" ,"age": 12,"registrationNumber": "34567","registrationStatus": "Successful"}
-    
-    @tag3
-  Scenario: Student Registration
-    Given url 'http://localhost:8083/register/student'
-    And request { "name": "Abcdef" ,"age": "43","registrationNumber": "78909"}
-    When method post
-    Then status 200
-    And match response == { "name": "Abcdef" ,"age": 43,"registrationNumber": "78909","registrationStatus": "Successful"}
-    
+    * def res = response
+   	* match each res == '#[] responsePattern'
+ 
