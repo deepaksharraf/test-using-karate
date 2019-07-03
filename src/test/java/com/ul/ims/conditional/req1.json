@@ -1,0 +1,9 @@
+{
+	"name":"Deepak",
+	"age":24,
+	"child": true,
+	"children": {
+		"boys": 2,
+		"girls": 1
+	}
+}
